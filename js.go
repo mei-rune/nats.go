@@ -1273,7 +1273,7 @@ func (js *js) subscribe(subj, queue string, cb MsgHandler, ch chan *Msg, isSync,
 	// to which it should be attaching to.
 	if consumer != _EMPTY_ {
 		info, err = js.ConsumerInfo(stream, consumer)
-		notFoundErr = errors.Is(err, ErrConsumerNotFound)
+		notFoundErr = err == ErrConsumerNotFound
 		lookupErr = err == ErrJetStreamNotEnabled || err == ErrTimeout || err == context.DeadlineExceeded
 	}
 

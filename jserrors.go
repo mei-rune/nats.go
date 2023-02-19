@@ -154,7 +154,7 @@ func (e *APIError) Is(err error) bool {
 	}
 	// Extract internal APIError to match against.
 	var aerr *APIError
-	ok := errors.As(err, &aerr)
+	ok := errorAs(err, &aerr)
 	if !ok {
 		return ok
 	}
